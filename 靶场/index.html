@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>我的家乡 - 潮州</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="top">
+        <h1>我的家乡 · 潮州</h1>
+    </div>
+
+    <!-- 导航按钮 -->
+    <nav>
+        <button onclick="showPage('home')">首页介绍</button>
+        <button onclick="showPage('food')">特色美食</button>
+        <button onclick="showPage('travel')">旅游景点</button>
+        <button onclick="showPage('culture')">地方风俗</button>
+    </nav>
+
+    <div class="main">
+        <!-- 首页：潮州介绍 -->
+        <div id="home" class="content">
+            <h2>潮州城市介绍</h2>
+            <p id="intro1">潮州位于广东省东部，韩江中下游，是国家历史文化名城，素有“海滨邹鲁，岭海名邦”之称。</p>
+            <p id="intro2">这里历史悠久，古城风貌保存完好，牌坊街、古桥、古寺众多。</p>
+            <p id="intro3">潮州是潮汕文化的发源地，人文底蕴深厚，民风淳朴，景色优美，是一座充满古韵的千年古城。</p>
+        </div>
+
+        <!-- 特色美食 -->
+        <div id="food" class="content">
+            <h2>潮州特色美食</h2>
+            <div class="item">
+                <h3>牛肉火锅</h3>
+                <p id="food1">现切鲜牛肉，清汤锅底，鲜甜爽口，是潮州代表美食。</p>
+            </div>
+            <div class="item">
+                <h3>潮州肠粉</h3>
+                <p id="food2">薄嫩米皮，配料丰富，酱汁浓郁，本地人日常早餐。</p>
+            </div>
+            <div class="item">
+                <h3>蚝烙</h3>
+                <p id="food3">生蚝搭配淀粉煎制，外酥里嫩，风味独特。</p>
+            </div>
+        </div>
+
+        <!-- 旅游景点 -->
+        <div id="travel" class="content">
+            <h2>潮州旅游景点</h2>
+            <div class="item">
+                <h3>广济桥</h3>
+                <p id="travel1">中国四大古桥之一，横跨韩江，夜景十分漂亮。</p>
+            </div>
+            <div class="item">
+                <h3>牌坊街</h3>
+                <p id="travel2">古城核心街道，明清牌坊林立，古色古香。</p>
+            </div>
+            <div class="item">
+                <h3>开元寺</h3>
+                <p id="culture3">千年古刹，建筑宏伟，历史悠久。</p>
+            </div>
+        </div>
+
+        <!-- 地方风俗 -->
+        <div id="culture" class="content">
+            <h2>潮州地方风俗</h2>
+            <div class="item">
+                <h3>工夫茶</h3>
+                <p id="culture1">潮州传统茶文化，日常待客必备，礼仪讲究。</p>
+            </div>
+            <div class="item">
+                <h3>营老爷</h3>
+                <p id="culture2">潮汕特色民俗活动，节日巡游祈福，热闹隆重。</p>
+            </div>
+            <div class="item">
+                <h3>潮剧</h3>
+                <p id="culture3">传统地方戏曲，唱腔优美，是非物质文化遗产。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="foot">
+        我的家乡潮州 网页设计
+    </div>
+
+    <!-- 页面切换JS -->
+    <script>
+        // 默认只显示首页
+        let list = document.getElementsByClassName("content");
+        for(let i=0;i<list.length;i++){
+            list[i].style.display = "none";
+        }
+        document.getElementById("home").style.display = "block";
+
+        // 切换页面函数
+        function showPage(id){
+            for(let i=0;i<list.length;i++){
+                list[i].style.display = "none";
+            }
+            document.getElementById(id).style.display = "block";
+        }
+    </script>
+
+    <!-- 管理员后台JS -->
+    <script>
+        // 1. 检查是否为管理员模式
+        const urlParams = new URLSearchParams(window.location.search);
+        const isAdmin = urlParams.get("admin") === "1" && localStorage.getItem("isAdmin") === "true";
+
+        if (isAdmin) {
+            // 2. 给所有可编辑的元素开启编辑并加提示框
+            document.querySelectorAll("#intro1, #intro2, #intro3, #food1, #food2, #food3, #travel1, #travel2, #travel3, #culture1, #culture2, #culture3").forEach(el => {
+                el.style.border = "1px dashed #c71c22"; // 红色虚线框提示
+                el.style.padding = "5px";
+                el.contentEditable = true; // 开启直接编辑功能
+            });
+
+            // 3. 添加退出后台按钮
+            const exitBtn = document.createElement("button");
+            exitBtn.innerText = "退出后台";
+            exitBtn.style.position = "fixed";
+            exitBtn.style.top = "10px";
+            exitBtn.style.right = "10px";
+            exitBtn.style.background = "#c71c22";
+            exitBtn.style.color = "#fff";
+            exitBtn.style.border = "none";
+            exitBtn.style.padding = "8px 15px";
+            exitBtn.style.borderRadius = "4px";
+            exitBtn.style.cursor = "pointer";
+
+            // 退出按钮点击事件
+            exitBtn.onclick = function() {
+                localStorage.removeItem("isAdmin"); // 清除登录状态
+                window.location.href = "靶场1.html"; // 跳回普通主页
+            };
+
+            // 把按钮加到页面上
+            document.body.appendChild(exitBtn);
+        }
+    </script>
+</body>
+</html>
