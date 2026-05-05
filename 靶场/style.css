@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "微软雅黑", sans-serif;
+    background-color: #f5f5f5;
+    line-height: 1.8;
+	background-image: url("背景图.jpeg");
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+}
+.top {
+    background-color: #c71c22;
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+}
+/* 导航栏按钮 */
+nav {
+    background: #222;
+    text-align: center;
+    padding: 15px 0;
+}
+nav button {
+    background: transparent;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    margin: 0 15px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+nav button:hover {
+    color: #c71c22;
+}
+/* 主体内容 */
+.main {
+    width: 900px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+}
+h2 {
+    color: #c71c22;
+    margin-bottom: 25px;
+    border-left: 4px solid #c71c22;
+    padding-left: 10px;
+}
+.item {
+    background: #f8f8f8;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 6px;
+}
+h3 {
+    margin-bottom: 5px;
+}
+.foot {
+    /* 关键：固定定位在底部 */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* 让它占满整个页面宽度 */
+
+    /* 你原来的样式保留 */
+    background: #222;
+    color: #fff;
+    text-align: center;
+    padding: 8px 0; /* 稍微调小一点高度，更协调 */
+    font-size: 14px;
+    /* 去掉 margin-top，不然会和内容有间隙 */
+    margin-top: 0;
+
+    /* 防止被其他元素挡住 */
+    z-index: 999;
+}
+
+/* 额外加：防止底部文字挡住页面内容 */
+body {
+    padding-bottom: 35px;
+}

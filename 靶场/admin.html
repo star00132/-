@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员后台 - 潮州网站</title>
+    <style>
+        body {
+            font-family: "微软雅黑", sans-serif;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+        .login-box h2 {
+            text-align: center;
+            color: #c71c22;
+            margin-bottom: 20px;
+        }
+        .login-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .login-box button {
+            width: 100%;
+            padding: 10px;
+            background: #c71c22;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .login-box button:hover {
+            background: #a8181d;
+        }
+        .tip {
+            color: #666;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h2>管理员登录</h2>
+        <input type="password" id="pwd" placeholder="请输入管理员密码">
+        <button onclick="login()">登录后台</button>
+        <p class="tip">默认密码：</p>
+    </div>
+
+    <script>
+        // 这里可以修改你的管理员密码
+        const ADMIN_PWD = "admin123";
+
+        function login() {
+            const inputPwd = document.getElementById("pwd").value;
+            if (inputPwd === ADMIN_PWD) {
+                // 登录成功，跳转到带后台权限的主页
+                localStorage.setItem("isAdmin", "true");
+                alert("登录成功！正在跳转到主页...");
+                window.location.href = "靶场1.html?admin=1";
+            } else {
+                alert("密码错误！");
+            }
+        }
+    </script>
+</body>
+</html>
